@@ -56,6 +56,9 @@
                         <td><span class="badge bg-secondary">@item.Categoria</span></td>
                         <td class="fw-bold">@item.Precio.ToString("C")</td>
                         
+                        <!--Mediante asp-route-id se crea la URL /Funkos/Details/5
+                        Ese id es capturado por el archivo Details.cshtml mediante el @page "{id:long}"
+                        , quien se lo envía a Details.cshtml.cs, que lo recoge como parámetro en la función-->
                         <td class="text-center">
                             <a asp-page="./Funkos/Details" asp-route-id="@item.Id" 
                                class="btn btn-info btn-sm text-white me-1" title="Detalles">
@@ -66,7 +69,10 @@
                                class="btn btn-warning btn-sm text-white me-1" title="Editar">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-
+                            
+                            <!-- El sistema busca en el archivo Index.cshtml.cs un método que coincida con esta fórmula 
+                            matemática: On + Verbo HTTP (POST) + Handler (Delete) + Async (Opcional) 
+                            y coincide con nuestro método OnPostDeleteAsync(id)-->
                             <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" 
                                   style="display:inline-block;" 
                                   onsubmit="return confirm('¿Seguro que quieres borrar a @item.Nombre?');">

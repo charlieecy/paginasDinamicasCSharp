@@ -8,7 +8,7 @@ namespace Razor_Pages.Pages;
 public class IndexModel(IFunkoService service) : PageModel
 {
     // Declaramos la propiedad que almacenará la lista de Funkos para mostrarla en la vista
-    public IEnumerable<FunkoResponseDTO> Funkos { get; set; } = [];
+    public IEnumerable<FunkoResponseDTO> Funkos { get; private set; } = [];
 
     // Vinculamos esta propiedad con el input del buscador de la vista
     // Usamos SupportsGet = true para que capture el valor desde la URL (ej: ?Nombre=Batman)
