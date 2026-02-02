@@ -1,0 +1,97 @@
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\appsettings.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.staticwebassets.runtime.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.staticwebassets.endpoints.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.exe
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.deps.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.runtimeconfig.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Razor Pages.pdb
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.AssemblyInfoInputs.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.AssemblyInfo.cs
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.csproj.CoreCompileInputs.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.RazorAssemblyInfo.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.RazorAssemblyInfo.cs
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\scopedcss\bundle\Razor Pages.styles.css
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\scopedcss\projectbundle\Razor Pages.bundle.scp.css
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\p7vba0zctg-{0}-b9sayid5wm-b9sayid5wm.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\5iqll0cg98-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\kgcnbrxgqo-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\9deiureaxn-{0}-t1cqhe9u97-t1cqhe9u97.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\g0b024lg0o-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\rz7mh771zl-{0}-sejl45xvog-sejl45xvog.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\gpez506c30-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\6236aubdp5-{0}-xvp3kq03qx-xvp3kq03qx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\khjv418pgr-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\6dr7ra6sj1-{0}-22vffe00uq-22vffe00uq.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\hrjjx5qomt-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\d9rvi3zofg-{0}-qesaa3a1fm-qesaa3a1fm.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\goe0up36sk-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\rouj2wb2h3-{0}-tmc1g35s3z-tmc1g35s3z.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\am9lkhxmqc-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\01ltyzbmbr-{0}-rxsg74s51o-rxsg74s51o.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\x0qa6dsp09-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\ahg69wb3c9-{0}-q9ht133ko3-q9ht133ko3.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\htezt94tcd-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\bqj7hqgdbn-{0}-gye83jo8yx-gye83jo8yx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\fpb50599il-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\c2912brfhy-{0}-wl58j5mj3v-wl58j5mj3v.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\zhlnhpiewi-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\3iacn5dz37-{0}-d4r6k3f320-d4r6k3f320.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\rd459r8tj6-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\1hr5wmffv7-{0}-keugtjm085-keugtjm085.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\jyny1bxygp-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\8qqijmwci8-{0}-zub09dkrxp-zub09dkrxp.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\eyku2ybkza-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\xkbsmta3ms-{0}-43atpzeawx-43atpzeawx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\ori309zbkx-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\0jm9lmyrtt-{0}-ynyaa8k90p-ynyaa8k90p.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\6te3r7elna-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\qvtyoax14i-{0}-c63t5i9ira-c63t5i9ira.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\cx9yjqvs84-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\oqmwh4kig4-{0}-4094rpi4f9-4094rpi4f9.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\2bw18h8ioz-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\naq2b8ddir-{0}-hd3gran6i8-hd3gran6i8.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\ntec740qgj-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\pynfa2vsv4-{0}-ltid2c489k-ltid2c489k.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\v1k2vwlkr1-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\i25rj4krjo-{0}-8vyfqsqgz1-8vyfqsqgz1.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\zdrgrm02p4-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\x1dnba4ve5-{0}-u9q1upor1n-u9q1upor1n.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\tjwqj53pj9-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\eofjvz0x1q-{0}-4d85u1mtcx-4d85u1mtcx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\42wa44kyk4-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\k606z9z7t2-{0}-03hjc8e09r-03hjc8e09r.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\is2g763288-{0}-48y08845bh-48y08845bh.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\kekx8u2tn9-{0}-356vix0kms-356vix0kms.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\wxvm9dhq1r-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\62cmzucqdj-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\f0yunonlu8-{0}-worgj0nhwm-worgj0nhwm.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\mhhye6ftm5-{0}-gk0pw8i4co-gk0pw8i4co.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\futsyo0shm-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\dgtabsqd35-{0}-d6nrnj6jjx-d6nrnj6jjx.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\1ni1o7bdwa-{0}-m9qm4tazc0-m9qm4tazc0.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\8judxhvazm-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\jnebg480qh-{0}-jjsuc0puko-jjsuc0puko.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\kgnubk74gj-{0}-9vr69e8ynj-9vr69e8ynj.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\zxxxwq8r2l-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\pfjtg1pskc-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\e59i0jx44b-{0}-ae7nxe9rh6-ae7nxe9rh6.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\compressed\0aps2o4h0f-{0}-ae7nxe9rh6-ae7nxe9rh6.gz
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\refint\Razor Pages.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.pdb
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.genruntimeconfig.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\ref\Razor Pages.dll

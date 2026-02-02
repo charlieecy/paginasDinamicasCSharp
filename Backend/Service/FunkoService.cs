@@ -1,0 +1,207 @@
+﻿using Backend.DTO;
+using Backend.Error;
+using Backend.Mapper;
+using Backend.Models;
+using Backend.Repository;
+using CSharpFunctionalExtensions;
+using Microsoft.Extensions.Caching.Memory;
+
+namespace Backend.Service;
+
+public class FunkoService(
+    IMemoryCache cache,
+    IFunkoRepository repository,
+    ICategoryRepository categoryRepository,
+    ILogger<FunkoService> logger)
+    : IFunkoService
+{
+
+    private const string CacheKeyPrefix = "Funko_";
+    private readonly TimeSpan _cacheDuration = TimeSpan.FromMinutes(5);
+
+    public async Task<Result<FunkoResponseDTO, FunkoError>> GetByIdAsync(long id)
+    {
+        logger.LogDebug("Buscando Funko con id: {Id}", id);
+        var cacheKey = CacheKeyPrefix + id;
+
+        // Intentar obtener del caché
+        if (cache.TryGetValue(cacheKey, out Funko? cachedFunko))
+        {
+            if (cachedFunko != null)
+            {
+                logger.LogDebug("Funko con id {Id} encontrado en caché", id);
+                return cachedFunko.ToDto();
+            }
+        }
+
+        var funko = await repository.GetByIdAsync(id);
+        if (funko == null)
+        {
+            logger.LogWarning("Funko con id {Id} no encontrado en la base de datos", id);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(
+                new FunkoNotFoundError($"No se encontró el Funko con id: {id}."));
+        }
+
+        // Guardar en caché
+        cache.Set(cacheKey, funko, _cacheDuration);
+        logger.LogDebug("Funko con id {Id} obtenido de BD y almacenado en caché", id);
+        return funko.ToDto();
+    }
+
+    public async Task<Result<PageResponse<FunkoResponseDTO>, FunkoError>> GetAllAsync(FilterDTO filter)
+    {
+        logger.LogDebug(
+            "Obteniendo listado de Funkos con filtros - Nombre: {Nombre}, Categoria: {Categoria}, MaxPrecio: {MaxPrecio}",
+            filter.Nombre, filter.Categoria, filter.MaxPrecio);
+
+        var (funkos, totalCount) = await repository.GetAllAsync(filter);
+        var response = funkos.Select(it => it.ToDto()).ToList();
+
+        var page = new PageResponse<FunkoResponseDTO>
+        {
+            Items = response,
+            TotalCount = totalCount,
+            Page = filter.Page,
+            Size = filter.Size
+        };
+
+        logger.LogInformation("Listado de Funkos obtenido, total encontrado: {Total}, página: {Page}", totalCount,
+            filter.Page);
+        return Result.Success<PageResponse<FunkoResponseDTO>, FunkoError>(page);
+    }
+
+    public async Task<Result<FunkoResponseDTO, FunkoError>> CreateAsync(FunkoPostPutRequestDTO dto)
+    {
+        logger.LogInformation("Creando nuevo Funko: {Nombre}, Categoria: {Categoria}, Precio: {Precio}",
+            dto.Nombre, dto.Categoria, dto.Precio);
+
+        var foundCategory = await categoryRepository.GetByNameAsync(dto.Categoria);
+        if (foundCategory == null)
+        {
+            logger.LogWarning("Intento de crear Funko con categoría inexistente: {Categoria}", dto.Categoria);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(
+                new FunkoConflictError($"La categoría: {dto.Categoria} no existe."));
+        }
+
+        var funkoModel = dto.ToModel();
+
+        // Asignarmos el CategoryId obtenido de la búsqueda
+        // Para establecer la relación de FK correctamente
+        funkoModel.CategoryId = foundCategory.Id;
+        funkoModel.Category = foundCategory;
+
+        var savedFunko = await repository.CreateAsync(funkoModel);
+        logger.LogInformation("Funko creado exitosamente con id: {Id}, Nombre: {Nombre}", savedFunko.Id,
+            savedFunko.Nombre);
+
+        return savedFunko.ToDto();
+    }
+
+    public async Task<Result<FunkoResponseDTO, FunkoError>> UpdateAsync(long id, FunkoPostPutRequestDTO dto)
+    {
+        logger.LogInformation("Actualizando Funko con id: {Id}, Nombre: {Nombre}, Categoria: {Categoria}",
+            id, dto.Nombre, dto.Categoria);
+
+        var foundCategory = await categoryRepository.GetByNameAsync(dto.Categoria);
+        if (foundCategory == null)
+        {
+            logger.LogWarning("Intento de actualizar Funko id {Id} con categoría inexistente: {Categoria}", id,
+                dto.Categoria);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(
+                new FunkoConflictError($"La categoría: {dto.Categoria} no existe."));
+        }
+
+        var funkoToUpdate = dto.ToModel();
+        funkoToUpdate.Id = id;
+
+        // Asignarmos el CategoryId obtenido de la búsqueda
+        // Para establecer la relación de FK correctamente
+        funkoToUpdate.CategoryId = foundCategory.Id;
+
+        funkoToUpdate.UpdatedAt = DateTime.UtcNow;
+
+        var updatedFunko = await repository.UpdateAsync(id, funkoToUpdate);
+
+        if (updatedFunko == null)
+        {
+            logger.LogWarning("Funko con id {Id} no encontrado para actualizar", id);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(
+                new FunkoNotFoundError($"No se encontró el Funko con id: {id}."));
+        }
+
+        logger.LogInformation("Funko id {Id} actualizado exitosamente", id);
+        
+        cache.Remove(CacheKeyPrefix + id);
+        return updatedFunko.ToDto();
+    }
+
+    public async Task<Result<FunkoResponseDTO, FunkoError>> PatchAsync(long id, FunkoPatchRequestDTO dto)
+    {
+        logger.LogInformation("Aplicando PATCH a Funko id: {Id}", id);
+
+        var foundFunko = await repository.GetByIdAsync(id);
+        if (foundFunko == null)
+        {
+            logger.LogWarning("Funko con id {Id} no encontrado para aplicar PATCH", id);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(new FunkoNotFoundError($"Funko {id} no encontrado"));
+        }
+
+        if (dto.Nombre != null)
+        {
+            foundFunko.Nombre = dto.Nombre;
+        }
+
+        if (dto.Precio != null)
+        {
+            foundFunko.Precio = (double)dto.Precio;
+        }
+
+        if (dto.Categoria != null)
+        {
+            var foundCategory = await categoryRepository.GetByNameAsync(dto.Categoria);
+            if (foundCategory == null)
+            {
+                logger.LogWarning("Intento de PATCH con categoría inexistente: {Categoria}", dto.Categoria);
+                return Result.Failure<FunkoResponseDTO, FunkoError>(
+                    new FunkoConflictError($"La categoría: {dto.Categoria} no existe."));
+            }
+
+            // Asignarmos el CategoryId obtenido de la búsqueda
+            // Para establecer la relación de FK correctamente
+            foundFunko.Category = foundCategory;
+            foundFunko.CategoryId = foundCategory.Id;
+        }
+
+        if (dto.Imagen != null)
+        {
+            foundFunko.Imagen = dto.Imagen;
+        }
+
+        await repository.UpdateAsync(id, foundFunko);
+        logger.LogInformation("PATCH aplicado exitosamente a Funko id {Id}", id);
+        
+        cache.Remove(CacheKeyPrefix + id);
+        return foundFunko.ToDto();
+    }
+
+    public async Task<Result<FunkoResponseDTO, FunkoError>> DeleteAsync(long id)
+    {
+        logger.LogInformation("Eliminando Funko con id: {Id}", id);
+        var deletedFunko = await repository.DeleteAsync(id);
+
+        if (deletedFunko == null)
+        {
+            logger.LogWarning("Funko con id {Id} no encontrado para eliminar", id);
+            return Result.Failure<FunkoResponseDTO, FunkoError>(
+                new FunkoNotFoundError($"No se encontró el Funko con id: {id}."));
+        }
+
+        logger.LogInformation("Funko id {Id} eliminado exitosamente de la BD", id);
+        
+        cache.Remove(CacheKeyPrefix + id);
+        return deletedFunko.ToDto();
+    }
+    
+}
+    
+    
