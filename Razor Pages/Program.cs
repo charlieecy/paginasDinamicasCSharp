@@ -19,6 +19,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//Para que al lanzar un notFound, nos redirija a /Error
+app.UseStatusCodePagesWithReExecute("/Error", "?code={0}");
+
 app.UseHttpsRedirection();
 
 app.UseRouting();
