@@ -95,3 +95,19 @@ C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.pdb
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.genruntimeconfig.cache
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\ref\Razor Pages.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.csproj.AssemblyReference.cache
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pages.sourcelink.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.deps.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.runtimeconfig.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.staticwebassets.runtime.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.staticwebassets.endpoints.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.exe
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\CSharpFunctionalExtensions.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.pdb
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pa.9657976C.Up2Date

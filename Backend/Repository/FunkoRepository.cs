@@ -41,7 +41,7 @@ public class FunkoRepository (Context dataBaseContext, ILogger<FunkoRepository> 
         query = ApplySorting(query, filter.SortBy, filter.Direction);
 
         var items = await query
-            .Skip(filter.Page * filter.Size)
+            .Skip((filter.Page - 1) * filter.Size)
             .Take(filter.Size)
             .ToListAsync();
 

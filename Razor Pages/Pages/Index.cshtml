@@ -1,10 +1,91 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Catálogo de Funkos";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="display-6 mb-4">Catálogo de Funkos</h1>
+
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-6">
+            <form method="get">
+                <div class="input-group">
+                    <input type="text" asp-for="Nombre" class="form-control" placeholder="Buscar por nombre...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                    @if (!string.IsNullOrEmpty(Model.Nombre))
+                    {
+                        <a asp-page="./Index" class="btn btn-outline-secondary">Limpiar</a>
+                    }
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-page="./Funkos/Create" class="btn btn-success">
+                <i class="bi bi-plus-lg"></i> Nuevo Funko
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            @if (Model.Funkos.Any())
+            {
+                @foreach (var item in Model.Funkos)
+                {
+                    <tr>
+                        <td>
+                             <img src="@item.Imagen" 
+                                 alt="@item.Nombre" 
+                                 class="rounded-circle shadow-sm"
+                                 style="width: 50px; height: 50px; object-fit: cover;" 
+                                 onerror="this.src='/uploads/default.png'" />
+                        </td>
+                        <td>@item.Nombre</td>
+                        <td><span class="badge bg-secondary">@item.Categoria</span></td>
+                        <td class="fw-bold">@item.Precio.ToString("C")</td>
+                        
+                        <td class="text-center">
+                            <a asp-page="./Funkos/Details" asp-route-id="@item.Id" 
+                               class="btn btn-info btn-sm text-white me-1" title="Detalles">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+
+                            <a asp-page="./Funkos/Edit" asp-route-id="@item.Id" 
+                               class="btn btn-warning btn-sm text-white me-1" title="Editar">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" 
+                                  style="display:inline-block;" 
+                                  onsubmit="return confirm('¿Seguro que quieres borrar a @item.Nombre?');">
+                                <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted p-4">
+                        <em>No encontramos Funkos con ese nombre.</em>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

@@ -6,12 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "Razor Pages/1.0.0": {
+      "Backend/1.0.0": {
         "dependencies": {
-          "Backend": "1.0.0"
+          "CSharpFunctionalExtensions": "3.6.0",
+          "Microsoft.EntityFrameworkCore": "10.0.2",
+          "Microsoft.EntityFrameworkCore.InMemory": "10.0.2",
+          "Microsoft.EntityFrameworkCore.Relational": "10.0.2"
         },
         "runtime": {
-          "Razor Pages.dll": {}
+          "Backend.dll": {}
         }
       },
       "CSharpFunctionalExtensions/3.6.0": {
@@ -62,25 +65,11 @@
             "fileVersion": "10.0.225.61305"
           }
         }
-      },
-      "Backend/1.0.0": {
-        "dependencies": {
-          "CSharpFunctionalExtensions": "3.6.0",
-          "Microsoft.EntityFrameworkCore": "10.0.2",
-          "Microsoft.EntityFrameworkCore.InMemory": "10.0.2",
-          "Microsoft.EntityFrameworkCore.Relational": "10.0.2"
-        },
-        "runtime": {
-          "Backend.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
   "libraries": {
-    "Razor Pages/1.0.0": {
+    "Backend/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -119,11 +108,6 @@
       "sha512": "sha512-1fUeyNmqDNfMogJ2ut7OKO57/WGjjkHMYeX51SpA3PwP7ftbx8g/Z3fbErD+1q14DILrqJfsszYsYhGssBRfDg==",
       "path": "microsoft.entityframeworkcore.relational/10.0.2",
       "hashPath": "microsoft.entityframeworkcore.relational.10.0.2.nupkg.sha512"
-    },
-    "Backend/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

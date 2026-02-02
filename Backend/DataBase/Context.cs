@@ -32,61 +32,71 @@ public class Context(DbContextOptions options) : DbContext(options)
                 Id = 1, 
                 Nombre = "Pikachu", 
                 Precio = 12.99, 
-                CategoryId = c1.Id // POKEMON
+                CategoryId = c1.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 2, 
                 Nombre = "Charmander", 
                 Precio = 12.99, 
-                CategoryId = c1.Id // POKEMON
+                CategoryId = c1.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 3, 
                 Nombre = "Iron Man (Mark 85)", 
                 Precio = 15.50, 
-                CategoryId = c2.Id // MARVEL
+                CategoryId = c2.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 4, 
                 Nombre = "Spider-Man (No Way Home)", 
                 Precio = 15.50, 
-                CategoryId = c2.Id // MARVEL
+                CategoryId = c2.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 5, 
                 Nombre = "Arthas (The Lich King)", 
                 Precio = 22.00, 
-                CategoryId = c3.Id // WOW
+                CategoryId = c3.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 6, 
                 Nombre = "Sylvanas Windrunner", 
                 Precio = 20.00, 
-                CategoryId = c3.Id // WOW
+                CategoryId = c3.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 7, 
                 Nombre = "Illidan Stormrage", 
                 Precio = 21.00, 
-                CategoryId = c3.Id // WOW
+                CategoryId = c3.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 8, 
                 Nombre = "Freddy Krueger", 
                 Precio = 14.50, 
-                CategoryId = c4.Id // TERROR
+                CategoryId = c4.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 9, 
                 Nombre = "Michael Myers", 
                 Precio = 14.50, 
-                CategoryId = c4.Id // TERROR
+                CategoryId = c4.Id,
+                Imagen = "/uploads/default.png"
             },
             new Funko { 
                 Id = 10, 
                 Nombre = "Mewtwo", 
                 Precio = 18.00, 
-                CategoryId = c1.Id // POKEMON
+                CategoryId = c1.Id,
+                Imagen = "/uploads/default.png"
             }
         );
     }

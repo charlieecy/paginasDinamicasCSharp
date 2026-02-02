@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 [Table("funkos")]
 public record Funko()
 {
-    private const string IMG_DEFAULT = "default.png";
+    private const string IMG_DEFAULT = "/uploads/default.png";
         
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
