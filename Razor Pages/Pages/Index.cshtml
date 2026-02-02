@@ -40,58 +40,89 @@
         </tr>
         </thead>
         <tbody>
-            @if (Model.Funkos.Any())
-            {
-                @foreach (var item in Model.Funkos)
-                {
-                    <tr>
-                        <td>
-                             <img src="@item.Imagen" 
-                                 alt="@item.Nombre" 
-                                 class="rounded-circle shadow-sm"
-                                 style="width: 50px; height: 50px; object-fit: cover;" 
-                                 onerror="this.src='/uploads/default.png'" />
-                        </td>
-                        <td>@item.Nombre</td>
-                        <td><span class="badge bg-secondary">@item.Categoria</span></td>
-                        <td class="fw-bold">@item.Precio.ToString("C")</td>
-                        
-                        <!--Mediante asp-route-id se crea la URL /Funkos/Details/5
-                        Ese id es capturado por el archivo Details.cshtml mediante el @page "{id:long}"
-                        , quien se lo envía a Details.cshtml.cs, que lo recoge como parámetro en la función-->
-                        <td class="text-center">
-                            <a asp-page="./Funkos/Details" asp-route-id="@item.Id" 
-                               class="btn btn-info btn-sm text-white me-1" title="Detalles">
-                                <i class="bi bi-eye-fill"></i>
-                            </a>
-
-                            <a asp-page="./Funkos/Edit" asp-route-id="@item.Id" 
-                               class="btn btn-warning btn-sm text-white me-1" title="Editar">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            
-                            <!-- El sistema busca en el archivo Index.cshtml.cs un método que coincida con esta fórmula 
-                            matemática: On + Verbo HTTP (POST) + Handler (Delete) + Async (Opcional) 
-                            y coincide con nuestro método OnPostDeleteAsync(id)-->
-                            <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" 
-                                  style="display:inline-block;" 
-                                  onsubmit="return confirm('¿Seguro que quieres borrar a @item.Nombre?');">
-                                <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
-                                    <i class="bi bi-trash-fill"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                }
-            }
-            else
+        @if (Model.Funkos.Any())
+        {
+            @foreach (var item in Model.Funkos)
             {
                 <tr>
-                    <td colspan="5" class="text-center text-muted p-4">
-                        <em>No encontramos Funkos con ese nombre.</em>
+                    <td>
+                        <img src="@item.Imagen" 
+                             alt="@item.Nombre" 
+                             class="rounded-circle shadow-sm"
+                             style="width: 50px; height: 50px; object-fit: cover;" 
+                             onerror="this.src='/uploads/default.png'" />
+                    </td>
+                    <td>@item.Nombre</td>
+                    <td><span class="badge bg-secondary">@item.Categoria</span></td>
+                    <td class="fw-bold">@item.Precio.ToString("C")</td>
+                        
+                    <!--Mediante asp-route-id se crea la URL /Funkos/Details/5
+                    Ese id es capturado por el archivo Details.cshtml mediante el page "{id:long}"
+                    , quien se lo envía a Details.cshtml.cs, que lo recoge como parámetro en la función-->
+                    <td class="text-center">
+                        <a asp-page="./Funkos/Details" asp-route-id="@item.Id" 
+                           class="btn btn-info btn-sm text-white me-1" title="Detalles">
+                            <i class="bi bi-eye-fill"></i>
+                        </a>
+
+                        <a asp-page="./Funkos/Edit" asp-route-id="@item.Id" 
+                           class="btn btn-warning btn-sm text-white me-1" title="Editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                            
+                        <!-- El sistema busca en el archivo Index.cshtml.cs un método que coincida con esta fórmula 
+                        matemática: On + Verbo HTTP (POST) + Handler (Delete) + Async (Opcional) 
+                        y coincide con nuestro método OnPostDeleteAsync(id)-->
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" 
+                              style="display:inline-block;" 
+                              onsubmit="return confirm('¿Seguro que quieres borrar a @item.Nombre?');">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted p-4">
+                    <em>No encontramos Funkos con ese nombre.</em>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Navegación de páginas">
+            <ul class="pagination justify-content-center">
+                
+                <li class="page-item @(Model.PageNumber <= 1 ? "disabled" : "")">
+                    <a class="page-link" 
+                       asp-page="./Index" 
+                       asp-route-PageNumber="@(Model.PageNumber - 1)"
+                       asp-route-Nombre="@Model.Nombre">
+                        &laquo; Anterior
+                    </a>
+                </li>
+
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        Página @Model.PageNumber de @Model.TotalPages
+                    </span>
+                </li>
+
+                <li class="page-item @(Model.PageNumber >= Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link" 
+                       asp-page="./Index" 
+                       asp-route-PageNumber="@(Model.PageNumber + 1)"
+                       asp-route-Nombre="@Model.Nombre">
+                        Siguiente &raquo;
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
 </div>

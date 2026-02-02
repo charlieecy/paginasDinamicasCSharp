@@ -26,6 +26,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/carlo/RiderProjects/PaginasDinamicasCSharp/Razor Pages/Pages/Funkos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVua29zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/carlo/RiderProjects/PaginasDinamicasCSharp/Razor Pages/Pages/Funkos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVua29zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
