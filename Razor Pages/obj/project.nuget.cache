@@ -1,15 +1,29 @@
 {
   "version": 2,
-  "dgSpecHash": "nx9xvMGCtWo=",
+  "dgSpecHash": "yb63yNVSZyk=",
   "success": true,
   "projectFilePath": "C:\\Users\\carlo\\RiderProjects\\PaginasDinamicasCSharp\\Razor Pages\\Razor Pages.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carlo\\.nuget\\packages\\csharpfunctionalextensions\\3.6.0\\csharpfunctionalextensions.3.6.0.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.aspnetcore.http\\2.3.9\\microsoft.aspnetcore.http.2.3.9.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.2\\microsoft.entityframeworkcore.10.0.2.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.2\\microsoft.entityframeworkcore.abstractions.10.0.2.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.2\\microsoft.entityframeworkcore.analyzers.10.0.2.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\10.0.2\\microsoft.entityframeworkcore.inmemory.10.0.2.nupkg.sha512",
     "C:\\Users\\carlo\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.2\\microsoft.entityframeworkcore.relational.10.0.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference Microsoft.AspNetCore.Http will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "projectPath": "C:\\Users\\carlo\\RiderProjects\\PaginasDinamicasCSharp\\Razor Pages\\Razor Pages.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\carlo\\RiderProjects\\PaginasDinamicasCSharp\\Razor Pages\\Razor Pages.csproj",
+      "libraryId": "Microsoft.AspNetCore.Http",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

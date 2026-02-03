@@ -2,11 +2,16 @@ using Backend.DTO;
 using Backend.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Razor_Pages.Session;
 
 namespace Razor_Pages.Pages;
 
 public class IndexModel(IFunkoService service) : PageModel
 {
+    
+    // Declaramos la propiedad que almacenará los tres últimos Funkos visitados
+    public List<FunkoResponseDTO> VistosRecientemente { get; private set; } = [];
+    
     // Declaramos la propiedad que almacenará la lista de Funkos para mostrarla en la vista
     public IEnumerable<FunkoResponseDTO> Funkos { get; private set; } = [];
 
@@ -41,6 +46,9 @@ public class IndexModel(IFunkoService service) : PageModel
             
             // Total de elementos (11) / Tamaño (10) = 1.1 -> Redondeamos hacia arriba (Ceiling) = 2 páginas
             TotalPages = (int)Math.Ceiling((double)result.Value.TotalCount / 10);
+            
+            // LEER DE LA SESIÓN: Recuperamos los vistos recientemente para pasarlos a la vista
+            VistosRecientemente = HttpContext.Session.GetJson<List<FunkoResponseDTO>>("VistosRecientemente") ?? new();
         }
         else
         {
@@ -59,6 +67,8 @@ public class IndexModel(IFunkoService service) : PageModel
         {
             // PATRÓN POST-REDIRECT-GET
             // Si se borró, recargamos la página actual (esto vuelve a ejecutar OnGetAsync)
+            // Creamos el mensaje flash (sobrevive a una redirección) y redireccionamos al index
+            TempData["Eliminado"] = $"{result.Value.Nombre} fue eliminado con éxito.";
             return RedirectToPage();
         }
         else

@@ -59,7 +59,8 @@ public class CreateModel (
             ModelState.AddModelError(string.Empty, result.Error.Message);
             return Page();
         }
-        //Si sale bien, redireccionamos al index
+        //Si sale bien, creamos el mensaje flash (sobrevive a una redirección) y redireccionamos al index
+        TempData["Creado"] = $"{Form.Nombre} creado con éxito, ya es parte de la colección.";
         return RedirectToPage("../Index");
     }
 }

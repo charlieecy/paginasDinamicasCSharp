@@ -7,6 +7,61 @@
 <div class="container">
     <h1 class="display-6 mb-4">Catálogo de Funkos</h1>
 
+    <!-- Últimos 3 Funkos visitados -->
+    @if (Model.VistosRecientemente.Any())
+    {
+        <div class="card mb-4 bg-light shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-muted mb-3"><i class="bi bi-clock-history"></i> Vistos recientemente</h5>
+                <div class="row g-3">
+                    @foreach (var funko in Model.VistosRecientemente)
+                    {
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center bg-white border rounded p-2">
+                                <img src="@funko.Imagen" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='/uploads/default.png'" />
+                                <div>
+                                    <h6 class="mb-0 text-truncate" style="max-width: 150px;">@funko.Nombre</h6>
+                                    <span class="badge bg-secondary">@funko.Categoria</span>
+                                </div>
+                                <a asp-page="./Funkos/Details" asp-route-id="@funko.Id" class="btn btn-sm btn-outline-primary ms-auto">
+                                    Ver
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <!-- Mensajes flash -->
+    <div class="container mt-3">
+        @if (TempData["Creado"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show">
+                <i class="fas fa-check-circle"></i> @TempData["Creado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+        @if (TempData["Actualizado"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show">
+                <i class="fas fa-exclamation-triangle"></i> @TempData["Actualizado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+        @if (TempData["Eliminado"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show">
+                <i class="fas fa-exclamation-triangle"></i> @TempData["Eliminado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+    </div>
     <div class="row mb-3 align-items-center">
         <div class="col-md-6">
             <form method="get">

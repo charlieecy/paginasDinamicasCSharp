@@ -79,7 +79,8 @@ public class UpdateModel(
             ModelState.AddModelError(string.Empty, result.Error.Message);
             return Page();
         }
-        //Si sale bien, redireccionamos al index
+        //Si sale bien, creamos el mensaje flash (sobrevive a una redirección) y redireccionamos al index
+        TempData["Actualizado"] = $"{Form.Nombre} fue actualizado con éxito.";
         return RedirectToPage("../Index");
 
     }

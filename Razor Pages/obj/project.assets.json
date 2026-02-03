@@ -15,6 +15,19 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http/2.3.9": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore/10.0.2": {
         "type": "package",
         "dependencies": {
@@ -125,6 +138,19 @@
         "lib/netstandard2.0/CSharpFunctionalExtensions.xml"
       ]
     },
+    "Microsoft.AspNetCore.Http/2.3.9": {
+      "sha512": "+CcfWi1LoKYbcxt+3toO4xbBG+qSSMbPuuow+cbZKIrITXuu1geN1traamL4jG8QaHdHGm3M0eCh+EOgdMgNPA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http/2.3.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.xml",
+        "microsoft.aspnetcore.http.2.3.9.nupkg.sha512",
+        "microsoft.aspnetcore.http.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/10.0.2": {
       "sha512": "d3+XKbLSHPCu3vwpXECoXcFbvGKmAhEeUmc1xy2czmuPnEF7rZN2HP5ZGMwCMbAKk4B01+nS4HixSMo2Vf/Y9g==",
       "type": "package",
@@ -208,7 +234,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Backend >= 1.0.0"
+      "Backend >= 1.0.0",
+      "Microsoft.AspNetCore.Http >= 2.3.9"
     ]
   },
   "packageFolders": {
@@ -257,6 +284,12 @@
     "frameworks": {
       "net10.0": {
         "targetAlias": "net10.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": {
+            "target": "Package",
+            "version": "[2.3.9, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -693,5 +726,17 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "PackageReference Microsoft.AspNetCore.Http will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "libraryId": "Microsoft.AspNetCore.Http",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

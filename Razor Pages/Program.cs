@@ -9,6 +9,15 @@ builder.Services.AddRazorPages();
 builder.Services.AddDatabase();
 builder.Services.AddRepositoriesAndServices();
 
+//Sesión
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.Name = ".FunkoWorld.Session";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +34,8 @@ app.UseStatusCodePagesWithReExecute("/Error", "?code={0}");
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 
