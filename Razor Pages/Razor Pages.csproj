@@ -14,5 +14,14 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.9" />
     </ItemGroup>
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\default.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260202175232_f4ddc17e_Captura_de_pantalla_2026_01_04_195059.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260202175247_312a0567_Captura_de_pantalla_2026_01_04_195059.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260202184004_aaab8839_Captura_de_pantalla_2026_01_04_195059.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260202192136_6a5bd1d7_Captura_de_pantalla_2026_01_04_195059.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260203111216_36318bb2_Captura_de_pantalla_2026_01_04_195059.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\uploads\funkos\20260205183814_cf40ca74_Captura_de_pantalla_2026_01_04_195059.png" />
+    </ItemGroup>
 
 </Project>

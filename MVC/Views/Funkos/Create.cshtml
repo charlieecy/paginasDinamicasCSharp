@@ -1,0 +1,154 @@
+﻿@using Backend.DTO
+@model FunkoPostPutRequestDTO
+<!-- 
+    model: Define el tipo de modelo que esta vista espera recibir desde el controller
+    Este modelo se usará para el binding de datos en el formulario
+    El controller pasa este modelo cuando llama: return View(funko);
+-->
+
+@{
+    ViewData["Title"] = "Nuevo Funko";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0"><i class="bi bi-plus-circle"></i> Crear Nuevo Funko</h3>
+                </div>
+                <div class="card-body">
+                    
+                    <!-- 
+                        asp-action: Especifica el método del controller al que se enviará el formulario
+                        "Create" corresponde al método [HttpPost] Create(...) en FunkosController
+                        
+                        method="post": Define que usaremos HTTP POST (no GET)
+                        
+                        enctype="multipart/form-data": NECESARIO para subir archivos (la imagen)
+                        Sin esto, el IFormFile? imagen no funciona
+                    -->
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        
+                        <!-- 
+                            asp-validation-summary="ModelOnly": Muestra errores generales del ModelState
+                            Corresponde a errores añadidos con: ModelState.AddModelError(string.Empty, ...)
+                            En el controller se usa cuando falla result.IsFailure
+                        -->
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- 
+                            CAMPO: NOMBRE
+                        -->
+                        <div class="mb-3">
+                            <!-- 
+                                asp-for="Nombre": Tag Helper que genera el atributo "for" del label
+                                Conecta con la propiedad "Nombre" del modelo FunkoPostPutRequestDTO
+                            -->
+                            <label asp-for="Nombre" class="form-label fw-bold">Nombre</label>
+                            
+                            <!-- 
+                                asp-for="Nombre": Genera automáticamente:
+                                - id="Nombre"
+                                - name="Nombre" (usado para el model binding en el POST)
+                                - value con el valor de funko.Nombre si existe
+                                
+                                El "name" es CRUCIAL: ASP.NET lo usa para mapear el valor del input
+                                a la propiedad Nombre del parámetro FunkoPostPutRequestDTO funko del controller
+                            -->
+                            <input asp-for="Nombre" class="form-control" placeholder="Ej: Batman" />
+                            
+                            <!-- 
+                                asp-validation-for="Nombre": Muestra errores de validación específicos del campo Nombre
+                                Se activa si el ModelState tiene errores para esta propiedad
+                                (ej: anotaciones [Required], [StringLength], etc. en el DTO)
+                            -->
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: CATEGORÍA
+                        -->
+                        <div class="mb-3">
+                            <label asp-for="Categoria" class="form-label fw-bold">Categoría</label>
+                            <!-- 
+                                Mismo principio que Nombre: asp-for conecta con la propiedad Categoria del DTO
+                            -->
+                            <input asp-for="Categoria" class="form-control" placeholder="Ej: MARVEL" />
+                            <div class="form-text">Categorías disponibles: POKEMON, MARVEL, WOW, TERROR</div>
+                            <span asp-validation-for="Categoria" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: PRECIO
+                        -->
+                        <div class="mb-3">
+                            <label asp-for="Precio" class="form-label fw-bold">Precio</label>
+                            <div class="input-group">
+                                <span class="input-group-text">€</span>
+                                <!-- 
+                                    type="number" step="0.01": Permite decimales para el precio
+                                    asp-for="Precio" lo mapea a la propiedad Precio del DTO
+                                -->
+                                <input asp-for="Precio" type="number" step="0.01" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: IMAGEN (archivo)
+                        -->
+                        <div class="mb-4">
+                            <label for="imagen" class="form-label fw-bold">Imagen del Funko</label>
+                            
+                            <!-- 
+                                type="file": Input para subir archivos
+                                name="imagen": IMPORTANTE - debe coincidir EXACTAMENTE con el parámetro del controller
+                                               En el controller: Create(FunkoPostPutRequestDTO funko, IFormFile? imagen)
+                                               El nombre "imagen" conecta este input con ese parámetro
+                                
+                                accept: Limita los tipos de archivo que se pueden seleccionar
+                                
+                                NO usamos asp-for aquí porque imagen NO es parte del DTO,
+                                es un parámetro separado del método Create
+                            -->
+                            <input type="file" name="imagen" id="imagen" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                            
+                            <!-- 
+                                Validación manual para errores de imagen
+                                En el controller se añaden con: ModelState.AddModelError("Imagen", "Error al subir la imagen")
+                            -->
+                            @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Imagen"] != null && ViewData.ModelState["Imagen"]!.Errors.Count > 0)
+                            {
+                                <span class="text-danger">@ViewData.ModelState["Imagen"]!.Errors[0].ErrorMessage</span>
+                            }
+                        </div>
+
+                        <!-- 
+                            BOTONES DE ACCIÓN
+                        -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <!-- 
+                                asp-action="Index": Genera un enlace al método Index del mismo controller
+                                Es equivalente a: href="/Funkos/Index"
+                                El usuario puede cancelar y volver al listado
+                            -->
+                            <a asp-action="Index" class="btn btn-secondary me-md-2">Cancelar</a>
+                            <button type="submit" class="btn btn-success">Guardar Funko</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    section Scripts: Define una sección que se renderizará en el layout principal
+    _ValidationScriptsPartial incluye jQuery Validation para validación del lado del cliente
+    Esto proporciona feedback inmediato al usuario sin hacer un POST al servidor
+-->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

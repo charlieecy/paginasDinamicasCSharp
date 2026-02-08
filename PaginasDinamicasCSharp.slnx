@@ -1,5 +1,5 @@
 <Solution>
   <Project Path="Backend/Backend.csproj" />
-  <Project Path="Blazor/Blazor.csproj" />
+  <Project Path="MVC/MVC.csproj" />
   <Project Path="Razor Pages/Razor Pages.csproj" />
 </Solution>

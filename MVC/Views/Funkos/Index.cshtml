@@ -1,0 +1,293 @@
+﻿@model Blazor.Models.FunkoIndexViewModel
+<!-- 
+    model: Define el tipo de modelo que esta vista espera recibir desde el controller
+    Este modelo proporciona acceso tipado a todos los datos mediante Model.Propiedad
+-->
+
+@{
+    ViewData["Title"] = "Catálogo de Funkos";
+}
+
+<div class="container">
+    <h1 class="display-6 mb-4">Catálogo de Funkos</h1>
+
+    <!-- 
+        Últimos 3 Funkos visitados
+        Model.VistosRecientemente viene del ViewModel y es una List<FunkoResponseDTO>
+    -->
+    @if (Model.VistosRecientemente.Any())
+    {
+        <div class="card mb-4 bg-light shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-muted mb-3"><i class="bi bi-clock-history"></i> Vistos recientemente</h5>
+                <div class="row g-3">
+                    @foreach (var funko in Model.VistosRecientemente)
+                    {
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center bg-white border rounded p-2">
+                                <!-- 
+                                    onerror: Si la imagen falla al cargar, se reemplaza por la imagen por defecto
+                                    Esto previene errores 404 visibles al usuario
+                                -->
+                                <img src="@funko.Imagen" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='/uploads/default.png'" />
+                                <div>
+                                    <h6 class="mb-0 text-truncate" style="max-width: 150px;">@funko.Nombre</h6>
+                                    <span class="badge bg-secondary">@funko.Categoria</span>
+                                </div>
+                                <!-- 
+                                    asp-action: Especifica el método del controller (Details)
+                                    asp-route-id: Añade el id como parámetro de ruta (/Funkos/Details/5)
+                                -->
+                                <a asp-action="Details" asp-route-id="@funko.Id" class="btn btn-sm btn-outline-primary ms-auto">
+                                    Ver
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- 
+        Mensajes flash (TempData)
+        TempData sobrevive a UNA redirección y luego se elimina automáticamente
+        Se usa para mostrar mensajes de éxito/error después de operaciones POST
+    -->
+    <div class="container mt-3">
+        <!-- Mensaje cuando se crea un Funko (viene del método Create) -->
+        @if (TempData["Creado"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show">
+                <i class="fas fa-check-circle"></i> @TempData["Creado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+        <!-- Mensaje cuando se actualiza un Funko (viene del método Update) -->
+        @if (TempData["Actualizado"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show">
+                <i class="fas fa-exclamation-triangle"></i> @TempData["Actualizado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        
+        <!-- Mensaje cuando se elimina un Funko (viene del método Delete) -->
+        @if (TempData["Eliminado"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show">
+                <i class="fas fa-exclamation-triangle"></i> @TempData["Eliminado"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+    </div>
+
+    <!-- 
+        Barra de búsqueda y botón de crear
+    -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-6">
+            <!-- 
+                method="get": Usa GET porque es una consulta (no modifica datos)
+                asp-action="Index": Envía el formulario al método Index del controller
+                
+                Al hacer submit, el navegador crea una URL como: /Funkos/Index?nombre=Batman
+                El controller captura 'nombre' automáticamente en el parámetro del método Index
+            -->
+            <form method="get" asp-action="Index">
+                <div class="input-group">
+                    <!-- 
+                        asp-for="Nombre": Tag Helper que genera:
+                        - name="Nombre" (para el model binding)
+                        - value con Model.Nombre (mantiene el valor después de buscar)
+                        
+                        IMPORTANTE: El nombre del input debe coincidir con el parámetro del controller
+                        Controller: Index(string? nombre, ...)
+                        Input: name="Nombre" (case-insensitive en ASP.NET)
+                    -->
+                    <input asp-for="Nombre" class="form-control" placeholder="Buscar por nombre...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                    <!-- 
+                        Botón para limpiar el filtro
+                        asp-action="Index" sin parámetros vuelve a la lista completa (página 1)
+                        Solo se muestra si hay un filtro activo
+                    -->
+                    @if (!string.IsNullOrEmpty(Model.Nombre))
+                    {
+                        <a asp-action="Index" class="btn btn-outline-secondary">Limpiar</a>
+                    }
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 text-end">
+            <!-- 
+                Botón para crear un nuevo Funko
+                asp-action="Create": Redirige al método [HttpGet] Create() del controller
+            -->
+            <a asp-action="Create" class="btn btn-success">
+                <i class="bi bi-plus-lg"></i> Nuevo Funko
+            </a>
+        </div>
+    </div>
+
+    <!-- 
+        Tabla de Funkos
+        Model.Funkos es IEnumerable<FunkoResponseDTO> del ViewModel
+    -->
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 
+            Verificamos si hay Funkos para mostrar
+            Con ViewModel tipado, tenemos autocompletado completo
+        -->
+        @if (Model.Funkos.Any())
+        {
+            <!-- Iteramos sobre cada Funko -->
+            @foreach (var item in Model.Funkos)
+            {
+                <tr>
+                    <td>
+                        <!-- Imagen del Funko con fallback a imagen por defecto -->
+                        <img src="@item.Imagen" 
+                             alt="@item.Nombre" 
+                             class="rounded-circle shadow-sm"
+                             style="width: 50px; height: 50px; object-fit: cover;" 
+                             onerror="this.src='/uploads/default.png'" />
+                    </td>
+                    <td>@item.Nombre</td>
+                    <td><span class="badge bg-secondary">@item.Categoria</span></td>
+                    <!-- 
+                        ToString("C"): Formatea el precio como moneda según la cultura del servidor
+                        Ej: 19.99 → €19,99 (España) o $19.99 (USA)
+                    -->
+                    <td class="fw-bold">@item.Precio.ToString("C")</td>
+                        
+                    <!-- 
+                        Botones para ver, editar y eliminar
+                    -->
+                    <td class="text-center">
+                        <!-- 
+                            BOTÓN: Ver detalles
+                            asp-action="Details": Llama al método Details del controller
+                            asp-route-id: Pasa el id como parámetro de ruta (/Funkos/Details/5)
+                        -->
+                        <a asp-action="Details" asp-route-id="@item.Id" 
+                           class="btn btn-info btn-sm text-white me-1" title="Detalles">
+                            <i class="bi bi-eye-fill"></i>
+                        </a>
+
+                        <!-- 
+                            BOTÓN: Editar
+                            asp-action="Update": Llama al método Update del controller
+                            asp-route-id: Pasa el id como parámetro (/Funkos/Update/5)
+                        -->
+                        <a asp-action="Update" asp-route-id="@item.Id" 
+                           class="btn btn-warning btn-sm text-white me-1" title="Editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                            
+                        <!-- 
+                            FORMULARIO: Eliminar
+                            method="post": Usa POST porque modifica datos (elimina)
+                            asp-action="Delete": Llama al método [HttpPost] Delete del controller
+                            asp-route-id: Pasa el id como parámetro
+                            
+                            @Html.AntiForgeryToken(): Token CSRF que debe coincidir con
+                            [ValidateAntiForgeryToken] en el controller
+                            
+                            onsubmit: Confirmación JavaScript antes de enviar el formulario
+                        -->
+                        <form method="post" asp-action="Delete" asp-route-id="@item.Id" 
+                              style="display:inline-block;" 
+                              onsubmit="return confirm('¿Seguro que quieres borrar a @item.Nombre?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <!-- Mensaje cuando no hay resultados (lista vacía o sin coincidencias) -->
+            <tr>
+                <td colspan="5" class="text-center text-muted p-4">
+                    <em>No encontramos Funkos con ese nombre.</em>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <!-- 
+        SECCIÓN: Paginación
+        Solo se muestra si hay más de una página
+        Model.TotalPages viene del ViewModel
+    -->
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Navegación de páginas">
+            <ul class="pagination justify-content-center">
+                
+                <!-- 
+                    Página anterior
+                    Model.HasPreviousPage: Propiedad calculada del ViewModel
+                    Si es false, el botón se deshabilita (disabled)
+                -->
+                <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                    <!-- 
+                        asp-action="Index": Recarga el Index
+                        asp-route-PageNumber: Página anterior (Model.PageNumber - 1)
+                        asp-route-Nombre: Mantiene el filtro de búsqueda activo
+                        
+                        Resultado: /Funkos/Index?PageNumber=1&Nombre=Batman
+                    -->
+                    <a class="page-link" 
+                       asp-action="Index" 
+                       asp-route-PageNumber="@(Model.PageNumber - 1)"
+                       asp-route-Nombre="@Model.Nombre">
+                        &laquo; Anterior
+                    </a>
+                </li>
+
+                <!-- 
+                    Indicador de página actual
+                    Muestra "Página X de Y" de forma informativa
+                -->
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        Página @Model.PageNumber de @Model.TotalPages
+                    </span>
+                </li>
+
+                <!-- 
+                    Página siguiente
+                    Model.HasNextPage: Propiedad calculada del ViewModel
+                    Si es false, el botón se deshabilita
+                -->
+                <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                    <a class="page-link" 
+                       asp-action="Index" 
+                       asp-route-PageNumber="@(Model.PageNumber + 1)"
+                       asp-route-Nombre="@Model.Nombre">
+                        Siguiente &raquo;
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+</div>

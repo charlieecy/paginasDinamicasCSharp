@@ -1,0 +1,177 @@
+﻿@model Blazor.Models.FunkoUpdateViewModel
+<!-- 
+    model: Define el ViewModel que esta vista espera recibir
+    El ViewModel contiene:
+    - Id: long
+    - Form: FunkoPostPutRequestDTO (con Nombre, Categoria, Precio, Imagen)
+    - ImageFile: IFormFile? (para la nueva imagen opcional)
+-->
+
+@{
+    ViewData["Title"] = "Editar Funko";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <!-- 
+                    HEADER: Título del formulario
+                -->
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0"><i class="bi bi-pencil-square"></i> Editar Funko</h3>
+                </div>
+                
+                <div class="card-body">
+                    
+                    <!-- 
+                        FORMULARIO DE EDICIÓN
+                        
+                        asp-action="Update": Envía el formulario al método [HttpPost] Update
+                        asp-route-id="@Model.Id": Añade el ID a la URL (/Funkos/Update/5)
+                        
+                        method="post": Usa POST para modificar datos
+                        enctype="multipart/form-data": NECESARIO para subir archivos (imagen)
+                    -->
+                    <form asp-action="Update" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+                        
+                        <!-- 
+                            HIDDEN FIELDS: Campos ocultos que se envían pero no se muestran
+                            
+                            1. Id: Necesario para que el ViewModel.Id se pueble correctamente
+                               Aunque también viene en la URL, es buena práctica incluirlo
+                        -->
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <!-- 
+                            2. Form.Imagen: Ruta de la imagen actual
+                               Si el usuario NO sube una nueva imagen, este valor se mantiene
+                               Si el usuario SÍ sube una nueva imagen, el controller lo reemplaza
+                               
+                               IMPORTANTE: Sin este hidden field, si no se sube imagen nueva,
+                               Form.Imagen sería null y perderíamos la referencia a la imagen actual
+                        -->
+                        <input type="hidden" asp-for="Form.Imagen" />
+
+                        <!-- 
+                            VALIDACIÓN GENERAL
+                            Muestra errores que NO están asociados a un campo específico
+                            Ej: ModelState.AddModelError(string.Empty, "Error general")
+                        -->
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- 
+                            CAMPO: NOMBRE
+                            asp-for="Form.Nombre": Mapea al ViewModel.Form.Nombre
+                            Genera: name="Form.Nombre" (el controller lo captura automáticamente)
+                        -->
+                        <div class="mb-3">
+                            <label asp-for="Form.Nombre" class="form-label fw-bold">Nombre</label>
+                            <input asp-for="Form.Nombre" class="form-control" placeholder="Ej: Batman" />
+                            <!-- Muestra errores de validación del campo Nombre -->
+                            <span asp-validation-for="Form.Nombre" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: CATEGORÍA
+                        -->
+                        <div class="mb-3">
+                            <label asp-for="Form.Categoria" class="form-label fw-bold">Categoría</label>
+                            <input asp-for="Form.Categoria" class="form-control" />
+                            <div class="form-text">Categorías disponibles: POKEMON, MARVEL, WOW, TERROR</div>
+                            <span asp-validation-for="Form.Categoria" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: PRECIO
+                            type="number" step="0.01": Permite decimales
+                        -->
+                        <div class="mb-3">
+                            <label asp-for="Form.Precio" class="form-label fw-bold">Precio</label>
+                            <div class="input-group">
+                                <span class="input-group-text">€</span>
+                                <input asp-for="Form.Precio" type="number" step="0.01" class="form-control" /> 
+                            </div>
+                            <span asp-validation-for="Form.Precio" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            CAMPO: IMAGEN (con preview de la actual)
+                        -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Imagen</label>
+                            
+                            <!-- 
+                                PREVIEW: Muestra la imagen actual antes de cambiarla
+                                Esto ayuda al usuario a saber qué imagen tiene actualmente el Funko
+                            -->
+                            <div class="d-flex align-items-center mb-2 p-2 border rounded bg-light">
+                                <!-- 
+                                    src="@Model.Form.Imagen": Ruta de la imagen actual
+                                    onerror: Si la imagen no carga, usa la imagen por defecto
+                                -->
+                                <img src="@Model.Form.Imagen" 
+                                     alt="Imagen Actual" 
+                                     class="rounded-circle me-3" 
+                                     style="width: 60px; height: 60px; object-fit: cover;"
+                                     onerror="this.src='/uploads/default.png'" />
+                                <div>
+                                    <small class="text-muted d-block">Imagen actual</small>
+                                    <!-- Muestra solo el nombre del archivo, no toda la ruta -->
+                                    <span class="text-break">@System.IO.Path.GetFileName(Model.Form.Imagen)</span>
+                                </div>
+                            </div>
+
+                            <!-- 
+                                INPUT FILE: Para subir una nueva imagen (OPCIONAL)
+                                
+                                asp-for="ImageFile": Mapea al ViewModel.ImageFile (IFormFile?)
+                                Genera: name="ImageFile"
+                                
+                                Si el usuario selecciona un archivo:
+                                - ImageFile != null en el controller
+                                - Se guarda la nueva imagen
+                                - Se actualiza Form.Imagen con la nueva ruta
+                                
+                                Si el usuario NO selecciona nada:
+                                - ImageFile == null en el controller
+                                - Form.Imagen mantiene el valor del hidden field (imagen actual)
+                            -->
+                            <label asp-for="ImageFile" class="form-label text-muted small">Cambiar imagen (Opcional):</label>
+                            <input asp-for="ImageFile" type="file" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+
+                        <!-- 
+                            BOTONES DE ACCIÓN
+                        -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <!-- 
+                                BOTÓN: Cancelar
+                                asp-action="Index": Vuelve al listado sin guardar cambios
+                            -->
+                            <a asp-action="Index" class="btn btn-secondary me-md-2">Cancelar</a>
+                            
+                            <!-- 
+                                BOTÓN: Guardar cambios
+                                type="submit": Envía el formulario
+                                Ejecuta: [HttpPost] Update(long id, FunkoUpdateViewModel viewModel)
+                            -->
+                            <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    SCRIPTS DE VALIDACIÓN DEL LADO DEL CLIENTE
+    jQuery Validation proporciona feedback inmediato sin hacer POST al servidor
+    Esto mejora la experiencia del usuario
+-->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
