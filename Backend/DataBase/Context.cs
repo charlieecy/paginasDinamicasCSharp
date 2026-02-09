@@ -1,16 +1,21 @@
 ﻿using Backend.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.DataBase;
 
-public class Context(DbContextOptions options) : DbContext(options)
+public class Context(DbContextOptions<Context> options) : IdentityDbContext<User, IdentityRole<long>, long>(options)
 {
     public DbSet<Funko> Funkos { get; set; } = null!;
     public DbSet<Category> Categories { get; set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        SeedData(modelBuilder); // Llamamos al metodo para poblar la BD
+        // Configura todas las tablas de Identity (Users, Roles, Passkeys...)
+        base.OnModelCreating(modelBuilder);
+        // Llamamos al metodo para poblar la BD de Funkos y Categorías
+        SeedData(modelBuilder); 
     }
 
     private static void SeedData(ModelBuilder modelBuilder)

@@ -111,3 +111,8 @@ C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.dll
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Backend.pdb
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\obj\Debug\net10.0\Razor Pa.9657976C.Up2Date
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Identity.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Razor Pages\bin\Debug\net10.0\Newtonsoft.Json.dll

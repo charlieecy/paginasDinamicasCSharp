@@ -1,11 +1,13 @@
 ﻿using Backend.DTO;
 using Backend.Service;
 using Backend.Storage;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Razor_Pages.Pages.Funkos;
 
+[Authorize(Policy = "EsAdmin")]
 public class CreateModel (
     IFunkoService service, 
     IFunkoStorage storage

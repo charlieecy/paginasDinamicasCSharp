@@ -1,11 +1,12 @@
 ﻿using Backend.DTO;
 using Backend.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Razor_Pages.Session;
 
 namespace Razor_Pages.Pages.Funkos;
-
+[Authorize (Roles = "User, Admin")]
 public class DetailsModel (IFunkoService service) : PageModel
 {
     public FunkoResponseDTO Funko { get; private set; } = default!;

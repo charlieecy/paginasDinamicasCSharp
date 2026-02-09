@@ -41,3 +41,8 @@ C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\obj\Debug\net10.0\Ba
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\obj\Debug\net10.0\Backend.genruntimeconfig.cache
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\obj\Debug\net10.0\ref\Backend.dll
 C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\obj\Debug\net10.0\Backend.sourcelink.json
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\bin\Debug\net10.0\Identity.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\carlo\RiderProjects\PaginasDinamicasCSharp\Backend\bin\Debug\net10.0\Newtonsoft.Json.dll

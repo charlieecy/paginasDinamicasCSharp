@@ -1,5 +1,6 @@
 using Backend.DTO;
 using Backend.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Razor_Pages.Session;
@@ -59,6 +60,18 @@ public class IndexModel(IFunkoService service) : PageModel
     
     public async Task<IActionResult> OnPostDeleteAsync(long id)
     {
+        
+        // Si el usuario no está autenticado -> Forzar Login (Challenge)
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Challenge(); 
+        }
+
+        // Si está logueado pero NO es Admin -> Prohibir (Forbid)
+        if (!User.IsInRole("Admin"))
+        {
+            return Forbid();
+        }
         //Llamamos al servicio para borrar
         var result = await service.DeleteAsync(id);
 

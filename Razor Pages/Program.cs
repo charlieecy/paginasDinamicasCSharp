@@ -18,6 +18,28 @@ builder.Services.AddSession(options => {
     options.Cookie.Name = ".FunkoWorld.Session";
 });
 
+//Login
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Si el usuario no está autenticado, va aquí:
+    options.LoginPath = "/Login"; 
+    
+    // Si el usuario está autenticado pero no tiene permisos (ej: es User e intenta borrar), va aquí:
+    options.AccessDeniedPath = "/Login"; 
+    
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+});
+
+//Roles
+builder.Services.AddAuthorization(options =>
+{
+    // Política Simple: Solo requiere un Rol
+    options.AddPolicy("EsAdmin", policy => policy.RequireRole("Admin"));
+    
+    options.AddPolicy("EsUser", policy => policy.RequireRole("User"));
+    
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,6 +59,7 @@ app.UseRouting();
 
 app.UseSession();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -44,6 +67,9 @@ app.MapRazorPages()
     .WithStaticAssets();
 
 //Poblamos la base de datos con los datos de prueba
+//Funkos y categorías:
 app.SeedDatabase();
+//Usuarios y roles:
+await IdentitySeeder.SeedIdentityAsync(app);
 
 app.Run();
